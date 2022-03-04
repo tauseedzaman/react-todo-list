@@ -1,8 +1,10 @@
 import React from "react";
 import "./App.css";
+// using react bootstrap for styling
 import { Button, Card, Form } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 
+// todo functional component
 function Todo({ todo, index, markTodo, removeTodo }) {
   return (
     <div className="todo ">
@@ -25,6 +27,7 @@ function Todo({ todo, index, markTodo, removeTodo }) {
   );
 }
 
+// todo form component
 function FormTodo({ addTodo }) {
   const [value, setValue] = React.useState("");
 
@@ -56,7 +59,9 @@ function FormTodo({ addTodo }) {
   );
 }
 
+// main app component
 function App() {
+  // use state hook
   const [todos, setTodos] = React.useState([
     {
       text: "First Todo",
@@ -64,17 +69,20 @@ function App() {
     },
   ]);
 
+  // add todo
   const addTodo = (text) => {
     const newTodos = [...todos, { text }];
     setTodos(newTodos);
   };
 
+  // mark todo as done
   const markTodo = (index) => {
     const newTodos = [...todos];
     newTodos[index].isDone = true;
     setTodos(newTodos);
   };
 
+  // remove todo
   const removeTodo = (index) => {
     const newTodos = [...todos];
     newTodos.splice(index, 1);
